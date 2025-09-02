@@ -1,0 +1,139 @@
+model DemoDM (1.0) "A small demonstration model"
+  author "me"
+  
+  include "../build/tmp/IVOA-v1.0.vodsl"
+
+otype PhotometricSystem  ""
+  {
+        description: ivoa:string  @?   "String representation Photometric system";
+        detectorType: ivoa:integer   "Type of detector (e.g energy or photon counter)";
+        photometryFilter : PhotometryFilter @+  as composition "";
+  }
+
+otype PhotometryFilter  ""
+  {
+        name: ivoa:string   "Filter Name in the instrumental  configuration";
+        description: ivoa:string   "Text description of the filter band";
+        bandName: ivoa:string   "";
+        dataValidityFrom: ivoa:datetime   "";
+        dataValidityTo: ivoa:datetime   "";
+        spectralLocation: ivoa:RealQuantity   "";
+  }
+
+
+  package catalog
+  {
+
+  enum LuminosityType  "vale"
+  {
+  magnitude  "",
+  flux  ""
+  }
+
+  enum SourceClassification  ""
+  {
+  target  "",
+  calibrator ""
+  }
+
+  dtype AlignedEllipse  -> catalog.SkyError ""
+    {
+          longError: ivoa:real   "";
+          latError: ivoa:real   "";
+    }
+
+  dtype CircleError  -> catalog.SkyError ""
+    {
+          radius: ivoa:real   "";
+    }
+
+  dtype GenericEllipse  -> catalog.SkyError ""
+    {   // constraint  self.major>=self.minor// constraint  self.minor >= 0
+          major: ivoa:real   "major axis of error ellipse";
+          minor: ivoa:real   "minor axis of error ellipse";
+          pa: ivoa:real   "Position angle of error ellipse in coordinate system of position.";
+
+    }
+
+  dtype SkyCoordinate  ""
+  < "0<=self.longitude.value < 360" as Natural>
+  < "-90<=self.latitude.value<=90" as Natural>
+    {
+          longitude: ivoa:RealQuantity   "The longitude part of this position in units of degrees.";
+          latitude: ivoa:RealQuantity   "The latitude part of this position in units of degrees.";
+          frame  references catalog.SkyCoordinateFrame "";
+    }
+
+  abstract dtype SkyError  "Error of a position on the sky."
+    {
+    }
+
+
+  abstract otype AbstractSource  -> catalog.AstroObject ""
+    {
+          name: ivoa:string   "";
+          description: ivoa:string  @?   "";
+          ^position: catalog.SkyCoordinate   "";
+          positionError: catalog.SkyError  @?   "";
+          classification: catalog.SourceClassification   "";
+          luminosity : catalog.LuminosityMeasurement @*  as composition "";
+    }
+
+  abstract otype AstroObject  "Generic base class for all astronomical objects."
+    {
+          objectType: ivoa:string  @?   "" semantic  in "http://www.ivoa.net/rdf/object-type";
+    }
+
+  otype LuminosityMeasurement  ""
+    {
+          value: ivoa:RealQuantity   "";
+          error: ivoa:RealQuantity  @?   "";
+          description: ivoa:string  @?   "";
+          type: catalog.LuminosityType   "";
+          filter  references DemoDM:PhotometryFilter "";
+    }
+
+  otype SDSSSource  -> catalog.AbstractSource ""
+    {
+       subset DemoDM:catalog.AbstractSource.positionError  as DemoDM:catalog.AlignedEllipse;
+    }
+
+  otype SkyCoordinateFrame  ""
+    {
+          name: ivoa:string iskey "";
+          documentURI: ivoa:anyURI   "";
+          equinox: ivoa:string  @?   "";
+          system: ivoa:string  @?   "";
+    }
+
+  otype Source  -> catalog.AbstractSource ""
+    {
+    	subset AbstractSource.positionError as catalog.GenericEllipse;
+    }
+
+  otype TwoMassSource  -> catalog.AbstractSource ""
+    {
+       subset AbstractSource.positionError  as DemoDM:catalog.GenericEllipse;
+    }
+
+   package inner {
+
+   otype Testing {
+   	plain : ivoa:string "a single string";
+   //	arrayIsh : ivoa:string @[3..3] "an array with 3 elements";
+      unbounded : ivoa:string @* "an array with many elements";
+
+   }
+   otype SourceCatalogue
+   {
+   	name : ivoa:string "the name of the catalogue";
+   	entry : catalog:AbstractSource @* as composition "the entries in the catalogue";
+   	aTest : Testing @? as composition "try this out";
+   	aTestMore : Testing @* as composition "a try with more than one";
+
+   }
+
+
+  }
+
+  }

@@ -1,12 +1,16 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.5.26"
+    id("net.ivoa.vo-dml.vodmltools") version "0.5.27"
+    `maven-publish`
 }
+
+group = "org.javastro.ivoa.dm"
+version = "0.1-SNAPSHOT"
 
 vodml {
     vodmlDir.set(file("vo-dml"))
     vodslDir.set(file("model"))
-    bindingFiles.setFrom(file("vo-dml/TemplateDM-v1.vodml-binding.xml"))
+    bindingFiles.setFrom(file("DemoDM.vodml-binding.xml"))
     outputDocDir.set(layout.projectDirectory.dir("doc/std/vodml-generated"))
     outputSiteDir.set(layout.projectDirectory.dir("doc/site/generated")) // N.B the last part of this path must be "generated"
 
@@ -36,7 +40,7 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
     implementation("org.slf4j:slf4j-api:1.7.32")
-    testRuntimeOnly("ch.qos.logback:logback-classic:1.4.12")
+    testRuntimeOnly("ch.qos.logback:logback-classic:1.5.13")
 
     testImplementation("com.h2database:h2:2.2.220")
     testImplementation("org.javastro:jaxbjpa-utils:0.2.3")
@@ -82,5 +86,28 @@ tasks.register<Exec>("doSite"){
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
+    }
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.named<Jar>("sourcesJar") {
+    from(tasks.named("vodmlGenerateJava"))
+}
+val tjar = tasks.register<Jar>("testJar") {
+    from(sourceSets.test.get().output)
+    archiveClassifier.set("test")
+    exclude("hibernate.properties")
+}
+
+tasks.withType<Jar> { duplicatesStrategy = DuplicatesStrategy.INCLUDE } //IMPL bugfix - see https://stackoverflow.com/questions/67265308/gradle-entry-classpath-is-a-duplicate-but-no-duplicate-handling-strategy-has-b
+
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            artifact(tjar)
+        }
     }
 }

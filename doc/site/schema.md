@@ -3,6 +3,6 @@ Schema
 
 The schema for the model instance serializations can be found below
 
-* [XML](generated/schema/TemplateDM-v1.vo-dml.xsd){:download=TemplateDM-v1.vo-dml.xsd}
-* [JSON](generated/schema/TemplateDM-v1.vo-dml.json){:download=TemplateDM-v1.vo-dml.json}
-* [TAP](generated/schema/TemplateDM-v1.vo-dml.tap.xml){:download=TemplateDM-v1.vo-dml.tap.xml}
+* [XML](generated/schema/DemoDM.vo-dml.xsd){:download=DemoDM.vo-dml.xsd}
+* [JSON](generated/schema/DemoDM.vo-dml.json){:download=DemoDM.vo-dml.json}
+* [TAP](generated/schema/DemoDM.vo-dml.tap.xml){:download=DemoDM.vo-dml.tap.xml}
