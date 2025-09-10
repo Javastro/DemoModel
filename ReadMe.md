@@ -9,6 +9,8 @@ To create this in your local maven cache
 gradle -x test clean  publishtomavenlocal
 ```
 
+[![Java CI with Gradle](https://github.com/Javastro/DemoModel/actions/workflows/gradletest.yml/badge.svg)](https://github.com/Javastro/DemoModel/actions/workflows/gradletest.yml)
+
 __FIXME__ This demo model illustrates a problem with the JSON serialization of contained references - it is really a problem with the generated schema
 
 ```json
@@ -23,3 +25,7 @@ __FIXME__ This demo model illustrates a problem with the JSON serialization of c
 }
     
 ```
+
+[![site deploy](https://github.com/Javastro/DemoModel/actions/workflows/site.yml/badge.svg)](https://github.com/Javastro/DemoModel/actions/workflows/site.yml)
+
+[Read the model documentation](https://javastro.github.io/DemoModel/)
