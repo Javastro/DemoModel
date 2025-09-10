@@ -2,6 +2,7 @@ plugins {
     // this plugin provides all the vo-dml functionality
     id("net.ivoa.vo-dml.vodmltools") version "0.5.27"
     `maven-publish`
+    id("org.kordamp.gradle.jandex") version "1.1.0"
 }
 
 group = "org.javastro.ivoa.dm"
@@ -94,6 +95,16 @@ java {
 tasks.named<Jar>("sourcesJar") {
     from(tasks.named("vodmlGenerateJava"))
 }
+
+//gradle insists on these next two - though I do not think that it really does depend on it...
+tasks.withType<Javadoc>() {
+    mustRunAfter("jandex")
+}
+tasks.named<JavaCompile>("compileTestJava") {
+    mustRunAfter("jandex")
+}
+
+
 val tjar = tasks.register<Jar>("testJar") {
     from(sourceSets.test.get().output)
     archiveClassifier.set("test")
