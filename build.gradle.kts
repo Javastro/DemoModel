@@ -1,6 +1,6 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.5.27"
+    id("net.ivoa.vo-dml.vodmltools") version "0.5.28"
     `maven-publish`
     id("org.kordamp.gradle.jandex") version "1.1.0"
 }
@@ -34,7 +34,7 @@ tasks.test {
 
 dependencies {
     //all data models will want to depend on the base model at least
-    api("org.javastro.ivoa.vo-dml:ivoa-base:1.1-SNAPSHOT") // IMPL using API so that it appears in transitive compile
+    api("org.javastro.ivoa.vo-dml:ivoa-base:1.0.5-SNAPSHOT") // IMPL using API so that it appears in transitive compile
 
     // the dependencies below are related to testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
