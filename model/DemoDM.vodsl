@@ -3,6 +3,36 @@ model DemoDM (1.0) "A small demonstration model"
   
   include "../build/tmp/IVOA-v1.0.vodsl"
 
+
+dtype Point  "location on the sky in spherical coordinates"
+    {
+          alpha: ivoa:real  "longitude angle";
+          delta: ivoa:real "latitude angle";
+    }
+
+  abstract dtype Shape "base type of all shapes"
+    {
+
+    }
+
+  dtype Circle  -> Shape "a circular region on the sky"
+    {
+          center: Point  "the centre of the circle";
+          radius: ivoa:real  "the radius of the circle";
+    }
+
+  dtype MultiShape  "multiple simple shapes describing regions as a single value"
+    {
+          shapes: Shape  @+  "";
+    }
+
+  dtype Polygon  -> Shape "a simple polygon region on the sky defined a sequence of points connected by great-circle segments"
+    {
+ //         points: Point @[3..-1] "";
+            points: Point @+ "";
+    }
+
+
 otype PhotometricSystem  ""
   {
         description: ivoa:string  @?   "String representation Photometric system";
@@ -59,8 +89,7 @@ otype PhotometryFilter  ""
   < "0<=self.longitude.value < 360" as Natural>
   < "-90<=self.latitude.value<=90" as Natural>
     {
-          longitude: ivoa:RealQuantity   "The longitude part of this position in units of degrees.";
-          latitude: ivoa:RealQuantity   "The latitude part of this position in units of degrees.";
+          coord: Point "";
           frame  references catalog.SkyCoordinateFrame "";
     }
 
@@ -121,9 +150,13 @@ otype PhotometryFilter  ""
    otype Testing {
    	plain : ivoa:string "a single string";
    //	arrayIsh : ivoa:string @[3..3] "an array with 3 elements";
-      unbounded : ivoa:string @* "an array with many elements";
-
+    unbounded : ivoa:string @* "an array with many elements";
+	apoint: Point "";
+	acircle: Circle "";
+//	amultishape : MultiShape "";
+	apoly : Polygon "";
    }
+   
    otype SourceCatalogue
    {
    	name : ivoa:string "the name of the catalogue";

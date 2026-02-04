@@ -9,13 +9,116 @@
       <title></title>
       <author>me</author>
       <version>1.0</version>
-      <lastModified>2025-09-02T14:57:48Z</lastModified>
+      <lastModified>2026-02-04T17:09:05Z</lastModified>
       <import>
         <name>ivoa</name>
-        <version>1.1</version>
+        <version>1.0</version>
         <url>IVOA-v1.0.vo-dml.xml</url>
         <documentationURL>not known</documentationURL>
       </import>
+            <dataType>
+              <vodml-id>Point</vodml-id>
+              <name>Point</name>
+              <description>location on the sky in spherical coordinates</description>	    
+            <attribute>
+              <vodml-id>Point.alpha</vodml-id>
+              <name>alpha</name>
+              <description>longitude angle</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Point.delta</vodml-id>
+              <name>delta</name>
+              <description>latitude angle</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType abstract="true">
+              <vodml-id>Shape</vodml-id>
+              <name>Shape</name>
+              <description>base type of all shapes</description>	    
+            </dataType>
+            <dataType>
+              <vodml-id>Circle</vodml-id>
+              <name>Circle</name>
+              <description>a circular region on the sky</description>	    
+               <extends>
+                  <vodml-ref>DemoDM:Shape</vodml-ref>
+               </extends>
+            <attribute>
+              <vodml-id>Circle.center</vodml-id>
+              <name>center</name>
+              <description>the centre of the circle</description>	    
+              <datatype>
+                 <vodml-ref>DemoDM:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            <attribute>
+              <vodml-id>Circle.radius</vodml-id>
+              <name>radius</name>
+              <description>the radius of the circle</description>	    
+              <datatype>
+                 <vodml-ref>ivoa:real</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>MultiShape</vodml-id>
+              <name>MultiShape</name>
+              <description>multiple simple shapes describing regions as a single value</description>	    
+            <attribute>
+              <vodml-id>MultiShape.shapes</vodml-id>
+              <name>shapes</name>
+              <description></description>	    
+              <datatype>
+                 <vodml-ref>DemoDM:Shape</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>-1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
+            <dataType>
+              <vodml-id>Polygon</vodml-id>
+              <name>Polygon</name>
+              <description>a simple polygon region on the sky defined a sequence of points connected by great-circle segments</description>	    
+               <extends>
+                  <vodml-ref>DemoDM:Shape</vodml-ref>
+               </extends>
+            <attribute>
+              <vodml-id>Polygon.points</vodml-id>
+              <name>points</name>
+              <description></description>	    
+              <datatype>
+                 <vodml-ref>DemoDM:Point</vodml-ref>
+              </datatype>
+              <multiplicity>
+                <minOccurs>1</minOccurs>
+                <maxOccurs>-1</maxOccurs>
+              </multiplicity>
+            </attribute>
+            </dataType>
             <objectType>
                <vodml-id>PhotometricSystem</vodml-id>
                <name>PhotometricSystem</name>
@@ -277,23 +380,11 @@
                                <!-- <language>Natural</language> -->
                             </constraint>
                          <attribute>
-                           <vodml-id>catalog.SkyCoordinate.longitude</vodml-id>
-                           <name>longitude</name>
-                           <description>The longitude part of this position in units of degrees.</description>	    
+                           <vodml-id>catalog.SkyCoordinate.coord</vodml-id>
+                           <name>coord</name>
+                           <description></description>	    
                            <datatype>
-                              <vodml-ref>ivoa:RealQuantity</vodml-ref>
-                           </datatype>
-                           <multiplicity>
-                             <minOccurs>1</minOccurs>
-                             <maxOccurs>1</maxOccurs>
-                           </multiplicity>
-                         </attribute>
-                         <attribute>
-                           <vodml-id>catalog.SkyCoordinate.latitude</vodml-id>
-                           <name>latitude</name>
-                           <description>The latitude part of this position in units of degrees.</description>	    
-                           <datatype>
-                              <vodml-ref>ivoa:RealQuantity</vodml-ref>
+                              <vodml-ref>DemoDM:Point</vodml-ref>
                            </datatype>
                            <multiplicity>
                              <minOccurs>1</minOccurs>
@@ -617,6 +708,42 @@
                                            <multiplicity>
                                              <minOccurs>0</minOccurs>
                                              <maxOccurs>-1</maxOccurs>
+                                           </multiplicity>
+                                         </attribute>
+                                         <attribute>
+                                           <vodml-id>catalog.inner.Testing.apoint</vodml-id>
+                                           <name>apoint</name>
+                                           <description></description>	    
+                                           <datatype>
+                                              <vodml-ref>DemoDM:Point</vodml-ref>
+                                           </datatype>
+                                           <multiplicity>
+                                             <minOccurs>1</minOccurs>
+                                             <maxOccurs>1</maxOccurs>
+                                           </multiplicity>
+                                         </attribute>
+                                         <attribute>
+                                           <vodml-id>catalog.inner.Testing.acircle</vodml-id>
+                                           <name>acircle</name>
+                                           <description></description>	    
+                                           <datatype>
+                                              <vodml-ref>DemoDM:Circle</vodml-ref>
+                                           </datatype>
+                                           <multiplicity>
+                                             <minOccurs>1</minOccurs>
+                                             <maxOccurs>1</maxOccurs>
+                                           </multiplicity>
+                                         </attribute>
+                                         <attribute>
+                                           <vodml-id>catalog.inner.Testing.apoly</vodml-id>
+                                           <name>apoly</name>
+                                           <description></description>	    
+                                           <datatype>
+                                              <vodml-ref>DemoDM:Polygon</vodml-ref>
+                                           </datatype>
+                                           <multiplicity>
+                                             <minOccurs>1</minOccurs>
+                                             <maxOccurs>1</maxOccurs>
                                            </multiplicity>
                                          </attribute>
                                       </objectType>

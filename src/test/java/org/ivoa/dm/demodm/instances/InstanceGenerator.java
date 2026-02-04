@@ -5,11 +5,10 @@ package org.ivoa.dm.demodm.instances;
  * Created on 02/09/2025 by Paul Harrison (paul.harrison@manchester.ac.uk).
  */
 
-import org.ivoa.dm.demodm.DemoDMModel;
-import org.ivoa.dm.demodm.PhotometricSystem;
-import org.ivoa.dm.demodm.PhotometryFilter;
+import org.ivoa.dm.demodm.*;
 import org.ivoa.dm.demodm.catalog.*;
 import org.ivoa.dm.demodm.catalog.inner.SourceCatalogue;
+import org.ivoa.dm.demodm.catalog.inner.Testing;
 import org.ivoa.dm.ivoa.RealQuantity;
 import org.ivoa.vodml.stdtypes.Unit;
 
@@ -83,8 +82,7 @@ public class InstanceGenerator {
                                           createSkyCoordinate(
                                                 co -> {
                                                    co.frame = frame;
-                                                   co.latitude = new RealQuantity(52.5, degree);
-                                                   co.longitude = new RealQuantity(2.5, degree);
+                                                   co.coord = new Point(0.1, 0.2);
                                                 });
                                     s.positionError = ellipseError; // note subsetting
                                     // forces compile need
@@ -112,9 +110,18 @@ public class InstanceGenerator {
                                  }));
             });
 
-      sc.setATestMore(new ArrayList<>());
+      Testing testing = Testing.createTesting(t ->{
+         t.plain = "just a plain string";
+         t.unbounded = List.of("string1", "string2");
+         t.acircle = new Circle(new Point(1.1, 2.4), 4.0);
+         t.apoint = new Point(5.0, 6.0);
+         t.apoly = new Polygon(List.of(new Point[]{new Point(5.0, 6.0), new Point(5.0, 7.0), new Point(6.0, 8.0)}));
+
+      });
+      sc.setATestMore(List.of(testing));
       retval.addContent(sc);
       retval.addContent(ps);
+
       return retval;
    }
 }
