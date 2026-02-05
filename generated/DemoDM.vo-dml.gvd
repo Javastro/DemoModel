@@ -1,0 +1,185 @@
+
+digraph GVmap {  
+	label = "\n\nDemoDM data model"
+	rankdir=TB
+	
+	node [ 
+	  shape=tab
+	  style=filled
+	]
+	subgraph cluster_packages {
+	  label="Model"
+	  rankdir=TB
+      style=filled
+      fillcolor="/set312/1"
+	  
+    "catalog" [
+
+    URL="../DemoDM/catalog"
+    label = "catalog"
+    fillcolor="/set312/2"
+    ] ;
+    
+    subgraph cluster_catalog {
+      label="Package: catalog"
+      style=filled
+      fillcolor="/set312/2"
+      
+    "catalog.inner" [
+
+    URL="../DemoDM/catalog.inner"
+    label = "inner"
+    fillcolor="/set312/3"
+    ] ;
+    
+    }
+    
+	}
+	
+	node [
+	shape=record
+	fontsize=8
+	style=filled] 
+    "DemoDM:Point" [
+    URL="../DemoDM/Point"
+    label = "{&lt;&lt;datatype&gt;&gt;\nPoint|+alpha : ivoa:real\l+delta : ivoa:real\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:Shape" [
+    URL="../DemoDM/Shape"
+    label = "{&lt;&lt;datatype&gt;&gt;\nShape}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:Circle" [
+    URL="../DemoDM/Circle"
+    label = "{&lt;&lt;datatype&gt;&gt;\nCircle|+center : DemoDM:Point\l+radius : ivoa:real\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:MultiShape" [
+    URL="../DemoDM/MultiShape"
+    label = "{&lt;&lt;datatype&gt;&gt;\nMultiShape|+shapes : DemoDM:Shape\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:Polygon" [
+    URL="../DemoDM/Polygon"
+    label = "{&lt;&lt;datatype&gt;&gt;\nPolygon|+points : DemoDM:Point\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:PhotometricSystem" [
+    URL="../DemoDM/PhotometricSystem"
+    label = "{PhotometricSystem|+description : ivoa:string\l+detectorType : ivoa:integer\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:PhotometryFilter" [
+    URL="../DemoDM/PhotometryFilter"
+    label = "{PhotometryFilter|+name : ivoa:string\l+description : ivoa:string\l+bandName : ivoa:string\l+dataValidityFrom : ivoa:datetime\l+dataValidityTo : ivoa:datetime\l+spectralLocation : ivoa:RealQuantity\l}"
+    fillcolor="/set312/1"
+    ] ;
+  "DemoDM:catalog.LuminosityType" [
+    URL="../DemoDM/catalog.LuminosityType"
+    label = "{&lt;&lt;enumeration&gt;&gt;\ncatalog/LuminosityType|+magnitude\l+flux\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.SourceClassification" [
+    URL="../DemoDM/catalog.SourceClassification"
+    label = "{&lt;&lt;enumeration&gt;&gt;\ncatalog/SourceClassification|+target\l+calibrator\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.AlignedEllipse" [
+    URL="../DemoDM/catalog.AlignedEllipse"
+    label = "{&lt;&lt;datatype&gt;&gt;\ncatalog/AlignedEllipse|+longError : ivoa:real\l+latError : ivoa:real\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.CircleError" [
+    URL="../DemoDM/catalog.CircleError"
+    label = "{&lt;&lt;datatype&gt;&gt;\ncatalog/CircleError|+radius : ivoa:real\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.GenericEllipse" [
+    URL="../DemoDM/catalog.GenericEllipse"
+    label = "{&lt;&lt;datatype&gt;&gt;\ncatalog/GenericEllipse|+major : ivoa:real\l+minor : ivoa:real\l+pa : ivoa:real\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.SkyCoordinate" [
+    URL="../DemoDM/catalog.SkyCoordinate"
+    label = "{&lt;&lt;datatype&gt;&gt;\ncatalog/SkyCoordinate|+coord : DemoDM:Point\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.SkyError" [
+    URL="../DemoDM/catalog.SkyError"
+    label = "{&lt;&lt;datatype&gt;&gt;\ncatalog/SkyError}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.AbstractSource" [
+    URL="../DemoDM/catalog.AbstractSource"
+    label = "{catalog/AbstractSource|+name : ivoa:string\l+description : ivoa:string\l+position : DemoDM:catalog.SkyCoordinate\l+positionError : DemoDM:catalog.SkyError\l+classification : DemoDM:catalog.SourceClassification\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.AstroObject" [
+    URL="../DemoDM/catalog.AstroObject"
+    label = "{catalog/AstroObject|+objectType : ivoa:string\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.LuminosityMeasurement" [
+    URL="../DemoDM/catalog.LuminosityMeasurement"
+    label = "{catalog/LuminosityMeasurement|+value : ivoa:RealQuantity\l+error : ivoa:RealQuantity\l+description : ivoa:string\l+type : DemoDM:catalog.LuminosityType\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.SDSSSource" [
+    URL="../DemoDM/catalog.SDSSSource"
+    label = "{catalog/SDSSSource}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.SkyCoordinateFrame" [
+    URL="../DemoDM/catalog.SkyCoordinateFrame"
+    label = "{catalog/SkyCoordinateFrame|+name : ivoa:string\l+documentURI : ivoa:anyURI\l+equinox : ivoa:string\l+system : ivoa:string\l}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.Source" [
+    URL="../DemoDM/catalog.Source"
+    label = "{catalog/Source}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.TwoMassSource" [
+    URL="../DemoDM/catalog.TwoMassSource"
+    label = "{catalog/TwoMassSource}"
+    fillcolor="/set312/2"
+    ] ;
+  "DemoDM:catalog.inner.Testing" [
+    URL="../DemoDM/catalog.inner.Testing"
+    label = "{catalog/inner/Testing|+plain : ivoa:string\l+unbounded : ivoa:string\l+apoint : DemoDM:Point\l+acircle : DemoDM:Circle\l+apoly : DemoDM:Polygon\l}"
+    fillcolor="/set312/3"
+    ] ;
+  "DemoDM:catalog.inner.SourceCatalogue" [
+    URL="../DemoDM/catalog.inner.SourceCatalogue"
+    label = "{catalog/inner/SourceCatalogue|+name : ivoa:string\l}"
+    fillcolor="/set312/3"
+    ] ;
+  
+ 
+    edge [color="red", arrowtail="none", arrowhead="empty"]
+    "DemoDM:Circle" -> "DemoDM:Shape" ;
+  "DemoDM:Polygon" -> "DemoDM:Shape" ;
+  "DemoDM:catalog.AlignedEllipse" -> "DemoDM:catalog.SkyError" ;
+  "DemoDM:catalog.CircleError" -> "DemoDM:catalog.SkyError" ;
+  "DemoDM:catalog.GenericEllipse" -> "DemoDM:catalog.SkyError" ;
+  "DemoDM:catalog.AbstractSource" -> "DemoDM:catalog.AstroObject" ;
+  "DemoDM:catalog.SDSSSource" -> "DemoDM:catalog.AbstractSource" ;
+  "DemoDM:catalog.Source" -> "DemoDM:catalog.AbstractSource" ;
+  "DemoDM:catalog.TwoMassSource" -> "DemoDM:catalog.AbstractSource" ;
+  
+ 
+    edge [color="blue", arrowhead="open", arrowtail="diamond",dir="both",fontsize="10"]
+    "DemoDM:PhotometricSystem" -> "DemoDM:PhotometryFilter" [headlabel="1..*",label="photometryFilter",labelfontsize=10] ;
+  "DemoDM:catalog.AbstractSource" -> "DemoDM:catalog.LuminosityMeasurement" [headlabel="0..*",label="luminosity",labelfontsize=10] ;
+  "DemoDM:catalog.inner.SourceCatalogue" -> "DemoDM:catalog.AbstractSource" [headlabel="0..*",label="entry",labelfontsize=10] ;
+  "DemoDM:catalog.inner.SourceCatalogue" -> "DemoDM:catalog.inner.Testing" [headlabel="0..1",label="aTest",labelfontsize=10] ;
+  "DemoDM:catalog.inner.SourceCatalogue" -> "DemoDM:catalog.inner.Testing" [headlabel="0..*",label="aTestMore",labelfontsize=10] ;
+  
+ 
+    edge [color="green", arrowhead="open", arrowtail="none"]
+    "DemoDM:catalog.SkyCoordinate" -> "DemoDM:catalog.SkyCoordinateFrame" [headlabel="1",label="frame",labelfontsize=10] ;
+  "DemoDM:catalog.LuminosityMeasurement" -> "DemoDM:PhotometryFilter" [headlabel="1",label="filter",labelfontsize=10] ;
+    
+}
+  

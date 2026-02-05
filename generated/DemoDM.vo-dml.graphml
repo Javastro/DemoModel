@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns/graphml"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.0/ygraphml.xsd">
+   <key xmlns:y="http://www.yworks.com/xml/graphml"
+        attr.name="Title"
+        attr.type="string"
+        for="graph"
+        id="t0">
+      <default xml:space="preserve">DemoDM</default>
+   </key>
+   <key xmlns:y="http://www.yworks.com/xml/graphml"
+        attr.name="description"
+        attr.type="string"
+        for="node"
+        id="k1"/>
+   <key xmlns:y="http://www.yworks.com/xml/graphml"
+        id="k2"
+        for="node"
+        yfiles.type="nodegraphics"/>
+   <key xmlns:y="http://www.yworks.com/xml/graphml"
+        id="k3"
+        for="edge"
+        yfiles.type="edgegraphics"/>
+   <key xmlns:y="http://www.yworks.com/xml/graphml"
+        id="k4"
+        for="graph"
+        yfiles.type="postprocessors"/>
+   <graph edgedefault="directed"><!--nodes-->
+      <node id="DemoDM:Point">
+         <data key="k1">Point</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">Point</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype="dataType"
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve">+alpha : ivoa:real
++delta : ivoa:real
+</y:AttributeLabel>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node id="DemoDM:Shape">
+         <data key="k1">Shape</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bolditalic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">Shape</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype="dataType"
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve"/>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node id="DemoDM:Circle">
+         <data key="k1">Circle</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">Circle</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype="dataType"
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve">+center : DemoDM:Point
++radius : ivoa:real
+</y:AttributeLabel>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node id="DemoDM:MultiShape">
+         <data key="k1">MultiShape</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">MultiShape</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype="dataType"
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve">+shapes : DemoDM:Shape
+</y:AttributeLabel>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node id="DemoDM:Polygon">
+         <data key="k1">Polygon</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">Polygon</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype="dataType"
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve">+points : DemoDM:Point
+</y:AttributeLabel>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node id="DemoDM:PhotometricSystem">
+         <data key="k1">PhotometricSystem</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">PhotometricSystem</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype=""
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve">+description : ivoa:string
++detectorType : ivoa:integer
+</y:AttributeLabel>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node id="DemoDM:PhotometryFilter">
+         <data key="k1">PhotometryFilter</data>
+         <data xmlns:y="http://www.yworks.com/xml/graphml" key="k2">
+            <y:UMLClassNode>
+               <y:Fill color="#BDB992" transparent="false"/>
+               <y:BorderStyle color="#000000" type="line" width="1.0"/>
+               <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">PhotometryFilter</y:NodeLabel>
+               <y:UML clipContent="true"
+                      constraint=""
+                      hasDetailsColor="false"
+                      omitDetails="false"
+                      stereotype=""
+                      use3DEffect="true">
+                  <y:AttributeLabel xml:space="preserve">+name : ivoa:string
++description : ivoa:string
++bandName : ivoa:string
++dataValidityFrom : ivoa:datetime
++dataValidityTo : ivoa:datetime
++spectralLocation : ivoa:RealQuantity
+</y:AttributeLabel>
+                  <y:MethodLabel xml:space="preserve"/>
+               </y:UML>
+            </y:UMLClassNode>
+         </data>
+      </node>
+      <node xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e183"
+            yfiles.foldertype="group">
+         <data key="k2">
+            <y:GroupNode>
+               <y:Fill color="#E8E9CA" transparent="false"/>
+               <y:BorderStyle color="#000000" raised="false" type="dashed" width="1.0"/>
+               <y:NodeLabel alignment="left"
+                            autoSizePolicy="node_width"
+                            modelName="sides"
+                            modelPosition="n"
+                            backgroundColor="#F2F0D8">catalog</y:NodeLabel>
+            </y:GroupNode>
+         </data>
+         <graph edgedefault="directed" id="G">catalogcatalog<node id="DemoDM:catalog.LuminosityType">
+               <data key="k1">catalog/LuminosityType</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/LuminosityType</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="enumeration"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+magnitude
++flux
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.SourceClassification">
+               <data key="k1">catalog/SourceClassification</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/SourceClassification</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="enumeration"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+target
++calibrator
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.AlignedEllipse">
+               <data key="k1">catalog/AlignedEllipse</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/AlignedEllipse</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="dataType"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+longError : ivoa:real
++latError : ivoa:real
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.CircleError">
+               <data key="k1">catalog/CircleError</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/CircleError</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="dataType"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+radius : ivoa:real
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.GenericEllipse">
+               <data key="k1">catalog/GenericEllipse</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/GenericEllipse</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="dataType"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+major : ivoa:real
++minor : ivoa:real
++pa : ivoa:real
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.SkyCoordinate">
+               <data key="k1">catalog/SkyCoordinate</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/SkyCoordinate</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="dataType"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+coord : DemoDM:Point
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.SkyError">
+               <data key="k1">catalog/SkyError</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bolditalic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/SkyError</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype="dataType"
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve"/>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.AbstractSource">
+               <data key="k1">catalog/AbstractSource</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bolditalic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/AbstractSource</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+name : ivoa:string
++description : ivoa:string
++position : DemoDM:catalog.SkyCoordinate
++positionError : DemoDM:catalog.SkyError
++classification : DemoDM:catalog.SourceClassification
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.AstroObject">
+               <data key="k1">catalog/AstroObject</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bolditalic" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/AstroObject</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+objectType : ivoa:string
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.LuminosityMeasurement">
+               <data key="k1">catalog/LuminosityMeasurement</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/LuminosityMeasurement</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+value : ivoa:RealQuantity
++error : ivoa:RealQuantity
++description : ivoa:string
++type : DemoDM:catalog.LuminosityType
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.SDSSSource">
+               <data key="k1">catalog/SDSSSource</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/SDSSSource</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve"/>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.SkyCoordinateFrame">
+               <data key="k1">catalog/SkyCoordinateFrame</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/SkyCoordinateFrame</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve">+name : ivoa:string
++documentURI : ivoa:anyURI
++equinox : ivoa:string
++system : ivoa:string
+</y:AttributeLabel>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.Source">
+               <data key="k1">catalog/Source</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/Source</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve"/>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="DemoDM:catalog.TwoMassSource">
+               <data key="k1">catalog/TwoMassSource</data>
+               <data key="k2">
+                  <y:UMLClassNode>
+                     <y:Fill color="#BDB992" transparent="false"/>
+                     <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                     <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/TwoMassSource</y:NodeLabel>
+                     <y:UML clipContent="true"
+                            constraint=""
+                            hasDetailsColor="false"
+                            omitDetails="false"
+                            stereotype=""
+                            use3DEffect="true">
+                        <y:AttributeLabel xml:space="preserve"/>
+                        <y:MethodLabel xml:space="preserve"/>
+                     </y:UML>
+                  </y:UMLClassNode>
+               </data>
+            </node>
+            <node id="d2e515" yfiles.foldertype="group">
+               <data key="k2">
+                  <y:GroupNode>
+                     <y:Fill color="#E8E9CA" transparent="false"/>
+                     <y:BorderStyle color="#000000" raised="false" type="dashed" width="1.0"/>
+                     <y:NodeLabel alignment="left"
+                                  autoSizePolicy="node_width"
+                                  modelName="sides"
+                                  modelPosition="n"
+                                  backgroundColor="#F2F0D8">inner</y:NodeLabel>
+                  </y:GroupNode>
+               </data>
+               <graph edgedefault="directed" id="G">catalog.innerinner<node id="DemoDM:catalog.inner.Testing">
+                     <data key="k1">catalog/inner/Testing</data>
+                     <data key="k2">
+                        <y:UMLClassNode>
+                           <y:Fill color="#BDB992" transparent="false"/>
+                           <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/inner/Testing</y:NodeLabel>
+                           <y:UML clipContent="true"
+                                  constraint=""
+                                  hasDetailsColor="false"
+                                  omitDetails="false"
+                                  stereotype=""
+                                  use3DEffect="true">
+                              <y:AttributeLabel xml:space="preserve">+plain : ivoa:string
++unbounded : ivoa:string
++apoint : DemoDM:Point
++acircle : DemoDM:Circle
++apoly : DemoDM:Polygon
+</y:AttributeLabel>
+                              <y:MethodLabel xml:space="preserve"/>
+                           </y:UML>
+                        </y:UMLClassNode>
+                     </data>
+                  </node>
+                  <node id="DemoDM:catalog.inner.SourceCatalogue">
+                     <data key="k1">catalog/inner/SourceCatalogue</data>
+                     <data key="k2">
+                        <y:UMLClassNode>
+                           <y:Fill color="#BDB992" transparent="false"/>
+                           <y:BorderStyle color="#000000" type="line" width="1.0"/>
+                           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="c" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve" y="3.0">catalog/inner/SourceCatalogue</y:NodeLabel>
+                           <y:UML clipContent="true"
+                                  constraint=""
+                                  hasDetailsColor="false"
+                                  omitDetails="false"
+                                  stereotype=""
+                                  use3DEffect="true">
+                              <y:AttributeLabel xml:space="preserve">+name : ivoa:string
+</y:AttributeLabel>
+                              <y:MethodLabel xml:space="preserve"/>
+                           </y:UML>
+                        </y:UMLClassNode>
+                     </data>
+                  </node>
+               </graph>
+            </node>
+         </graph>
+      </node>
+      <!--imported nodes-->
+      <!--edges-->
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e46"
+            source="DemoDM:Circle"
+            target="DemoDM:Shape">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e83"
+            source="DemoDM:Polygon"
+            target="DemoDM:Shape">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e215"
+            source="DemoDM:catalog.AlignedEllipse"
+            target="DemoDM:catalog.SkyError">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e239"
+            source="DemoDM:catalog.CircleError"
+            target="DemoDM:catalog.SkyError">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e254"
+            source="DemoDM:catalog.GenericEllipse"
+            target="DemoDM:catalog.SkyError">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e319"
+            source="DemoDM:catalog.AbstractSource"
+            target="DemoDM:catalog.AstroObject">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e444"
+            source="DemoDM:catalog.SDSSSource"
+            target="DemoDM:catalog.AbstractSource">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e497"
+            source="DemoDM:catalog.Source"
+            target="DemoDM:catalog.AbstractSource">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e508"
+            source="DemoDM:catalog.TwoMassSource"
+            target="DemoDM:catalog.AbstractSource">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#FF0000" type="line" width="2.0"/>
+               <y:Arrows source="none" target="white_delta"/>
+               <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e116"
+            source="DemoDM:PhotometricSystem"
+            target="DemoDM:PhotometryFilter">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#9393FF" type="line" width="2.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">photometryFilter<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">1..*<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e366"
+            source="DemoDM:catalog.AbstractSource"
+            target="DemoDM:catalog.LuminosityMeasurement">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#9393FF" type="line" width="2.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">luminosity<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">0..*<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e581"
+            source="DemoDM:catalog.inner.SourceCatalogue"
+            target="DemoDM:catalog.AbstractSource">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#9393FF" type="line" width="2.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">entry<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">0..*<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e590"
+            source="DemoDM:catalog.inner.SourceCatalogue"
+            target="DemoDM:catalog.inner.Testing">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#9393FF" type="line" width="2.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">aTest<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">0..1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e599"
+            source="DemoDM:catalog.inner.SourceCatalogue"
+            target="DemoDM:catalog.inner.Testing">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#9393FF" type="line" width="2.0"/>
+               <y:Arrows source="diamond" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">aTestMore<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">0..*<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e302"
+            source="DemoDM:catalog.SkyCoordinate"
+            target="DemoDM:catalog.SkyCoordinateFrame">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#00FF00" type="line" width="2.0"/>
+               <y:Arrows source="none" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">frame<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <edge xmlns:y="http://www.yworks.com/xml/graphml"
+            id="d2e431"
+            source="DemoDM:catalog.LuminosityMeasurement"
+            target="DemoDM:PhotometryFilter">
+         <data key="k3">
+            <y:PolyLineEdge>
+               <y:LineStyle color="#00FF00" type="line" width="2.0"/>
+               <y:Arrows source="none" target="standard"/>
+               <y:BendStyle smoothed="false"/>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="centered" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">filter<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="center" side="on_edge" sideReference="relative_to_edge_flow"/>
+   </y:EdgeLabel>
+               <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="target_on_edge" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" xml:space="preserve">1<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" placement="target" side="anywhere" sideReference="relative_to_edge_flow"/>
+      </y:EdgeLabel>
+            </y:PolyLineEdge>
+         </data>
+      </edge>
+      <data xmlns:y="http://www.yworks.com/xml/graphml" key="k4">
+         <y:Postprocessors>
+            <y:Processor class="yext.graphml.processor.NodeSizeAdapter">
+               <y:Option name="IGNORE_WIDTHS" value="false"/>
+               <y:Option name="IGNORE_HEIGHTS" value="false"/>
+               <y:Option name="ADAPT_TO_MAXIMUM_NODE" value="false"/>
+            </y:Processor>
+            <y:Processor class="y.module.TreeLayoutModule">
+               <y:Option name="GENERAL.LAYOUT_STYLE" value="AR"/>
+               <y:Option name="AR.BEND_DISTANCE" value="20"/>
+               <y:Option name="AR.VERTICAL_SPACE" value="10"/>
+               <y:Option name="AR.ASPECT_RATIO" value="1.41"/>
+               <y:Option name="AR.HORIZONTAL_SPACE" value="10"/>
+               <y:Option name="AR.USE_VIEW_ASPECT_RATIO" value="true"/>
+            </y:Processor>
+         </y:Postprocessors>
+      </data>
+   </graph>
+</graphml>

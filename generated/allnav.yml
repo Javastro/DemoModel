@@ -1,0 +1,46 @@
+- DemoDM model:
+  - Overview: "generated/DemoDM.vo-dml.md"
+  - ObjectTypes:
+    - PhotometricSystem: "generated/DemoDM/PhotometricSystem.md"
+    - PhotometryFilter: "generated/DemoDM/PhotometryFilter.md"
+    - catalog.AbstractSource: "generated/DemoDM/catalog.AbstractSource.md"
+    - catalog.AstroObject: "generated/DemoDM/catalog.AstroObject.md"
+    - catalog.LuminosityMeasurement: "generated/DemoDM/catalog.LuminosityMeasurement.md"
+    - catalog.SDSSSource: "generated/DemoDM/catalog.SDSSSource.md"
+    - catalog.SkyCoordinateFrame: "generated/DemoDM/catalog.SkyCoordinateFrame.md"
+    - catalog.Source: "generated/DemoDM/catalog.Source.md"
+    - catalog.TwoMassSource: "generated/DemoDM/catalog.TwoMassSource.md"
+    - catalog.inner.SourceCatalogue: "generated/DemoDM/catalog.inner.SourceCatalogue.md"
+    - catalog.inner.Testing: "generated/DemoDM/catalog.inner.Testing.md"
+  - DataTypes:
+    - Circle: "generated/DemoDM/Circle.md"
+    - MultiShape: "generated/DemoDM/MultiShape.md"
+    - Point: "generated/DemoDM/Point.md"
+    - Polygon: "generated/DemoDM/Polygon.md"
+    - Shape: "generated/DemoDM/Shape.md"
+    - catalog.AlignedEllipse: "generated/DemoDM/catalog.AlignedEllipse.md"
+    - catalog.CircleError: "generated/DemoDM/catalog.CircleError.md"
+    - catalog.GenericEllipse: "generated/DemoDM/catalog.GenericEllipse.md"
+    - catalog.SkyCoordinate: "generated/DemoDM/catalog.SkyCoordinate.md"
+    - catalog.SkyError: "generated/DemoDM/catalog.SkyError.md"
+  - Enumerations:
+    - catalog.LuminosityType: "generated/DemoDM/catalog.LuminosityType.md"
+    - catalog.SourceClassification: "generated/DemoDM/catalog.SourceClassification.md"
+- Imported Models:
+  - ivoa model:
+    - Overview: "generated/IVOA-v1.0.vo-dml.md"
+    - DataTypes:
+      - IntegerQuantity: "generated/ivoa/IntegerQuantity.md"
+      - Quantity: "generated/ivoa/Quantity.md"
+      - RealQuantity: "generated/ivoa/RealQuantity.md"
+    - PrimitiveTypes:
+      - Unit: "generated/ivoa/Unit.md"
+      - anyURI: "generated/ivoa/anyURI.md"
+      - boolean: "generated/ivoa/boolean.md"
+      - complex: "generated/ivoa/complex.md"
+      - datetime: "generated/ivoa/datetime.md"
+      - integer: "generated/ivoa/integer.md"
+      - nonnegativeInteger: "generated/ivoa/nonnegativeInteger.md"
+      - rational: "generated/ivoa/rational.md"
+      - real: "generated/ivoa/real.md"
+      - string: "generated/ivoa/string.md"

@@ -1,0 +1,190 @@
+
+
+@startuml
+
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+        
+entity "PhotometricSystem" as PhotometricSystem {
+
+    ID : BIGINT
+
+---
+
+    description : VARCHAR
+detectorType : INTEGER
+
+}
+
+entity "PhotometryFilter" as PhotometryFilter {
+
+    ID : BIGINT
+
+---
+
+    PHOTOMETRICSYSTEM_ID : BIGINT
+name : VARCHAR
+description : VARCHAR
+bandName : VARCHAR
+dataValidityFrom : TIMESTAMP
+dataValidityTo : TIMESTAMP
+spectralLocation_value : DOUBLE
+spectralLocation_unit : VARCHAR
+
+---
+      PHOTOMETRICSYSTEM_ID : BIGINT<<FK>>
+
+}
+
+entity "AbstractSource" as AbstractSource {
+
+    ID : BIGINT
+position_frame : VARCHAR
+
+---
+
+    SOURCECATALOGUE_ID : BIGINT
+name : VARCHAR
+description : VARCHAR
+position_coord_alpha : DOUBLE
+position_coord_delta : DOUBLE
+classification : VARCHAR
+
+---
+      SOURCECATALOGUE_ID : BIGINT<<FK>>
+ID : BIGINT<<FK>>
+position_frame : VARCHAR<<FK>>
+
+}
+
+entity "AstroObject" as AstroObject {
+
+    ID : BIGINT
+
+---
+
+    objectType : VARCHAR
+
+}
+
+entity "LuminosityMeasurement" as LuminosityMeasurement {
+
+    ID : BIGINT
+
+---
+
+    ABSTRACTSOURCE_ID : BIGINT
+value_value : DOUBLE
+value_unit : VARCHAR
+error_value : DOUBLE
+error_unit : VARCHAR
+description : VARCHAR
+type : VARCHAR
+filter : BIGINT
+
+---
+      filter : BIGINT<<FK>>
+ABSTRACTSOURCE_ID : BIGINT<<FK>>
+
+}
+
+entity "SDSSSource" as SDSSSource {
+
+    ID : BIGINT
+
+---
+
+    
+---
+      ID : BIGINT<<FK>>
+
+}
+
+entity "SkyCoordinateFrame" as SkyCoordinateFrame {
+
+    name : VARCHAR
+
+---
+
+    documentURI : VARCHAR
+equinox : VARCHAR
+system : VARCHAR
+
+}
+
+entity "Source" as Source {
+
+    ID : BIGINT
+
+---
+
+    
+---
+      ID : BIGINT<<FK>>
+
+}
+
+entity "TwoMassSource" as TwoMassSource {
+
+    ID : BIGINT
+
+---
+
+    
+---
+      ID : BIGINT<<FK>>
+
+}
+
+entity "Testing" as Testing {
+
+    ID : BIGINT
+
+---
+
+    SOURCECATALOGUE_ID : BIGINT
+plain : VARCHAR
+unbounded : VARCHAR
+apoint_alpha : DOUBLE
+apoint_delta : DOUBLE
+acircle_center_alpha : DOUBLE
+acircle_center_delta : DOUBLE
+acircle_radius : DOUBLE
+apoly_points_alpha : DOUBLE
+apoly_points_delta : DOUBLE
+
+---
+      SOURCECATALOGUE_ID : BIGINT<<FK>>
+
+}
+
+entity "SourceCatalogue" as SourceCatalogue {
+
+    ID : BIGINT
+
+---
+
+    name : VARCHAR
+
+}
+
+
+        PhotometryFilter }o--||PhotometricSystem
+AbstractSource }o--||SourceCatalogue
+AbstractSource }o--||AstroObject
+AbstractSource }o--||SkyCoordinateFrame
+LuminosityMeasurement }o--||PhotometryFilter
+LuminosityMeasurement }o--||AbstractSource
+SDSSSource }o--||AbstractSource
+Source }o--||AbstractSource
+TwoMassSource }o--||AbstractSource
+Testing }o--||SourceCatalogue
+
+
+
+@enduml
+
+    

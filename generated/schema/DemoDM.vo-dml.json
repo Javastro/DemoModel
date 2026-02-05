@@ -1,0 +1,585 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "https://ivoa.net/dm/DemoDM.vo-dml.json",
+  "title" : "",
+  "description" : "A small demonstration model",
+  "type" : "object",
+  "properties" : {
+    "DemoDMModel" : {
+      "type" : "object",
+      "properties" : {
+        "refs" : {
+          "type" : "object",
+          "properties" : {
+            "$comment" : "placeholder to make commas easier!",
+            "DemoDM:catalog.SkyCoordinateFrame" : {
+              "type" : "array",
+              "items" : {
+                "oneOf" : [ {
+                  "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyCoordinateFrame"
+                }, {
+                  "type" : "string",
+                  "built-in" : "true"
+                } ]
+              }
+            }
+          },
+          "additionalProperties" : false
+        },
+        "content" : {
+          "type" : "array",
+          "items" : {
+            "anyOf" : [ {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/PhotometricSystem"
+            }, {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.inner.SourceCatalogue"
+            } ]
+          },
+          "additionalProperties" : false
+        }
+      },
+      "additionalProperties" : false
+    }
+  },
+  "$defs" : {
+    "$comment" : "placeholder to make commas easier!",
+    "Point" : {
+      "type" : "object",
+      "description" : "location on the sky in spherical coordinates",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "alpha" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : "longitude angle"
+        },
+        "delta" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : "latitude angle"
+        }
+      },
+      "required" : [ "alpha", "delta" ],
+      "additionalProperties" : false
+    },
+    "Shape" : {
+      "type" : "object",
+      "description" : "base type of all shapes",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "@type" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "@type" ]
+    },
+    "Circle" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a circular region on the sky",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "center" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Point",
+            "description" : "the centre of the circle"
+          },
+          "radius" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : "the radius of the circle"
+          }
+        },
+        "required" : [ "center", "radius" ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "MultiShape" : {
+      "type" : "object",
+      "description" : "multiple simple shapes describing regions as a single value",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "shapes" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Shape"
+          },
+          "description" : ""
+        }
+      },
+      "required" : [ "shapes" ],
+      "additionalProperties" : false
+    },
+    "Polygon" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Shape"
+      }, {
+        "type" : "object",
+        "description" : "a simple polygon region on the sky defined a sequence of points connected by great-circle segments",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "points" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Point"
+            },
+            "description" : ""
+          }
+        },
+        "required" : [ "points" ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "PhotometricSystem" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "description" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : "String representation Photometric system"
+        },
+        "detectorType" : {
+          "type" : "number",
+          "built-in" : "true",
+          "description" : "Type of detector (e.g energy or photon counter)"
+        },
+        "photometryFilter" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/PhotometryFilter"
+          }
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "detectorType", "photometryFilter" ],
+      "additionalProperties" : false
+    },
+    "PhotometryFilter" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "name" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : "Filter Name in the instrumental configuration"
+        },
+        "description" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : "Text description of the filter band"
+        },
+        "bandName" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : ""
+        },
+        "dataValidityFrom" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : ""
+        },
+        "dataValidityTo" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : ""
+        },
+        "spectralLocation" : {
+          "$ref" : "https://ivoa.net/dm/IVOA-v1.0.vo-dml.json#/$defs/RealQuantity",
+          "description" : ""
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "name", "description", "bandName", "dataValidityFrom", "dataValidityTo", "spectralLocation" ],
+      "additionalProperties" : false
+    },
+    "catalog.LuminosityType" : {
+      "description" : "vale",
+      "enum" : [ "magnitude", "flux" ]
+    },
+    "catalog.SourceClassification" : {
+      "description" : "",
+      "enum" : [ "target", "calibrator" ]
+    },
+    "catalog.AlignedEllipse" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyError"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "longError" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : ""
+          },
+          "latError" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : ""
+          }
+        },
+        "required" : [ "longError", "latError" ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "catalog.CircleError" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyError"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "radius" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : ""
+          }
+        },
+        "required" : [ "radius" ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "catalog.GenericEllipse" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyError"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier!",
+          "major" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : "major axis of error ellipse"
+          },
+          "minor" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : "minor axis of error ellipse"
+          },
+          "pa" : {
+            "type" : "number",
+            "built-in" : "true",
+            "description" : "Position angle of error ellipse in coordinate system of position."
+          }
+        },
+        "required" : [ "major", "minor", "pa" ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "catalog.SkyCoordinate" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "coord" : {
+          "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Point",
+          "description" : ""
+        },
+        "frame" : {
+          "oneOf" : [ {
+            "type" : "string",
+            "built-in" : "true"
+          }, {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyCoordinateFrame"
+          } ],
+          "description" : ""
+        }
+      },
+      "required" : [ "coord", "frame" ],
+      "additionalProperties" : false
+    },
+    "catalog.SkyError" : {
+      "type" : "object",
+      "description" : "Error of a position on the sky.",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier!",
+        "@type" : {
+          "type" : "string"
+        }
+      },
+      "required" : [ "@type" ]
+    },
+    "catalog.AbstractSource" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.AstroObject"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier",
+          "name" : {
+            "type" : "string",
+            "built-in" : "true",
+            "description" : ""
+          },
+          "description" : {
+            "type" : "string",
+            "built-in" : "true",
+            "description" : ""
+          },
+          "position" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyCoordinate",
+            "description" : ""
+          },
+          "positionError" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SkyError",
+            "description" : ""
+          },
+          "classification" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SourceClassification",
+            "description" : ""
+          },
+          "luminosity" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.LuminosityMeasurement"
+            }
+          }
+        },
+        "required" : [ "name", "position", "classification" ]
+      } ]
+    },
+    "catalog.AstroObject" : {
+      "type" : "object",
+      "description" : "Generic base class for all astronomical objects.",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "objectType" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : ""
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "@type" ]
+    },
+    "catalog.LuminosityMeasurement" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "value" : {
+          "$ref" : "https://ivoa.net/dm/IVOA-v1.0.vo-dml.json#/$defs/RealQuantity",
+          "description" : ""
+        },
+        "error" : {
+          "$ref" : "https://ivoa.net/dm/IVOA-v1.0.vo-dml.json#/$defs/RealQuantity",
+          "description" : ""
+        },
+        "description" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : ""
+        },
+        "type" : {
+          "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.LuminosityType",
+          "description" : ""
+        },
+        "filter" : {
+          "oneOf" : [ {
+            "type" : "number"
+          }, {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/PhotometryFilter"
+          } ],
+          "description" : ""
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "value", "type", "filter" ],
+      "additionalProperties" : false
+    },
+    "catalog.SDSSSource" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.AbstractSource"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier"
+        },
+        "required" : [ ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "catalog.SkyCoordinateFrame" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "name" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : ""
+        },
+        "documentURI" : {
+          "type" : "string",
+          "format" : "uri",
+          "description" : ""
+        },
+        "equinox" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : ""
+        },
+        "system" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : ""
+        }
+      },
+      "required" : [ "name", "documentURI" ],
+      "additionalProperties" : false
+    },
+    "catalog.Source" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.AbstractSource"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier"
+        },
+        "required" : [ ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "catalog.TwoMassSource" : {
+      "allOf" : [ {
+        "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.AbstractSource"
+      }, {
+        "type" : "object",
+        "description" : "",
+        "properties" : {
+          "$comment" : "placeholder to make commas easier"
+        },
+        "required" : [ ]
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "catalog.inner.Testing" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "plain" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : "a single string"
+        },
+        "unbounded" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string",
+            "built-in" : "true"
+          },
+          "description" : "an array with many elements"
+        },
+        "apoint" : {
+          "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Point",
+          "description" : ""
+        },
+        "acircle" : {
+          "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Circle",
+          "description" : ""
+        },
+        "apoly" : {
+          "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/Polygon",
+          "description" : ""
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "plain", "apoint", "acircle", "apoly" ],
+      "additionalProperties" : false
+    },
+    "catalog.inner.SourceCatalogue" : {
+      "type" : "object",
+      "description" : "",
+      "properties" : {
+        "$comment" : "placeholder to make commas easier",
+        "@type" : {
+          "type" : "string",
+          "description" : "UType as type discriminator"
+        },
+        "name" : {
+          "type" : "string",
+          "built-in" : "true",
+          "description" : "the name of the catalogue"
+        },
+        "entry" : {
+          "type" : "array",
+          "items" : {
+            "anyOf" : [ {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.SDSSSource"
+            }, {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.Source"
+            }, {
+              "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.TwoMassSource"
+            } ]
+          }
+        },
+        "aTest" : {
+          "type" : "object",
+          "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.inner.Testing"
+        },
+        "aTestMore" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "https://ivoa.net/dm/DemoDM.vo-dml.json#/$defs/catalog.inner.Testing"
+          }
+        },
+        "_id" : {
+          "type" : "integer",
+          "description" : "surrogate key"
+        }
+      },
+      "required" : [ "name" ],
+      "additionalProperties" : false
+    }
+  }
+}
