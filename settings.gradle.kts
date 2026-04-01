@@ -1,5 +1,13 @@
 rootProject.name = "DemoDM"
 
+pluginManagement {
+    repositories {
+        mavenLocal() // IMPL allow picking up from local - should be removed when publishing
+        gradlePluginPortal()
+    }
+}
+
+
 dependencyResolutionManagement {
     repositories {
         mavenLocal()
@@ -9,7 +17,7 @@ dependencyResolutionManagement {
         will not be necessary when this library is released as a non-SNAPSHOT version.
          */
         maven {
-            url= uri("https://repo.dev.uksrc.org/repository/maven-snapshots/")
+            url= uri("https://repo.dev.uksrc.org/repository/maven-public/")
         }
     }
 }

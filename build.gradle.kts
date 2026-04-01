@@ -1,6 +1,6 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.5.29"
+    id("net.ivoa.vo-dml.vodmltools") version "0.6.1"
     `maven-publish`
     id("org.kordamp.gradle.jandex") version "1.1.0"
 }
@@ -33,9 +33,8 @@ tasks.test {
 }
 
 dependencies {
-    //all data models will want to depend on the base model at least
-    api("org.javastro.ivoa.vo-dml:ivoa-base:1.0-SNAPSHOT") // IMPL using API so that it appears in transitive compile
-
+    //depend on geom model.
+    implementation("net.ivoa.dm:ADQLGeomDM:0.9-SNAPSHOT") // IMPL using API so that it appears in transitive compile
     // the dependencies below are related to testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
@@ -120,5 +119,19 @@ publishing {
             from(components["java"])
             artifact(tjar)
         }
+    }
+    repositories {
+        maven {
+            name = "uksrcrepo"
+            credentials {
+                username = (findProperty("uksrcNexusUsername") ?: System.getenv("UKSRC_REPO_USERNAME")) as String?
+                password = (findProperty("uksrcNexusPassword") ?: System.getenv("UKSRC_REPO_PASSWORD")) as String?
+            }
+            val releasesRepoUrl = uri("https://repo.dev.uksrc.org/repository/maven-releases/")
+            val snapshotsRepoUrl = uri("https://repo.dev.uksrc.org/repository/maven-snapshots/")
+            url = uri(if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl)
+
+        }
+
     }
 }

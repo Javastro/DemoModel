@@ -5,12 +5,15 @@ package org.ivoa.dm.demodm.instances;
  * Created on 02/09/2025 by Paul Harrison (paul.harrison@manchester.ac.uk).
  */
 
+import org.ivoa.dm.adqlgeom.Circle;
+import org.ivoa.dm.adqlgeom.Polygon;
 import org.ivoa.dm.demodm.*;
 import org.ivoa.dm.demodm.catalog.*;
 import org.ivoa.dm.demodm.catalog.inner.SourceCatalogue;
 import org.ivoa.dm.demodm.catalog.inner.Testing;
 import org.ivoa.dm.ivoa.RealQuantity;
 import org.ivoa.vodml.stdtypes.Unit;
+import org.javastro.ivoacore.pgsphere.types.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -82,7 +85,7 @@ public class InstanceGenerator {
                                           createSkyCoordinate(
                                                 co -> {
                                                    co.frame = frame;
-                                                   co.coord = new Point(0.1, 0.2);
+                                                   co.coord = new  org.javastro.ivoacore.pgsphere.types.Point(0.1, 0.2);
                                                 });
                                     s.positionError = ellipseError; // note subsetting
                                     // forces compile need
