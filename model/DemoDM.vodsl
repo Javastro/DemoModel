@@ -27,16 +27,16 @@ otype PhotometryFilter  ""
   package catalog
   {
 
-  enum LuminosityType  "vale"
+  enum LuminosityType  "the type of luminosity measurement"
   {
   magnitude  "",
   flux  ""
   }
 
-  enum SourceClassification  ""
+  enum SourceClassification  "source classification"
   {
-  target  "",
-  calibrator ""
+  target  "source is the target of the observation",
+  calibrator  "source is a calibrator for the observation"
   }
 
   dtype AlignedEllipse  -> catalog.SkyError ""
@@ -62,7 +62,7 @@ otype PhotometryFilter  ""
   < "0<=self.longitude.value < 360" as Natural>
   < "-90<=self.latitude.value<=90" as Natural>
     {
-          coord: adqlgeom:Point "";
+          coord: adqlgeom:Point "the position on the sky";
           frame  references catalog.SkyCoordinateFrame "";
     }
 
@@ -88,8 +88,8 @@ otype PhotometryFilter  ""
 
   otype LuminosityMeasurement  ""
     {
-          value: ivoa:RealQuantity   "";
-          error: ivoa:RealQuantity  @?   "";
+          value: ivoa:RealQuantity   "the luminosity measurement";
+          error: ivoa:RealQuantity  @?   "the error on the luminosity measurement";
           description: ivoa:string  @?   "";
           type: catalog.LuminosityType   "";
           filter  references DemoDM:PhotometryFilter "";

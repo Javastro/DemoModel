@@ -9,7 +9,7 @@
       <title></title>
       <author>me</author>
       <version>1.0</version>
-      <lastModified>2026-03-02T15:11:37Z</lastModified>
+      <lastModified>2026-05-26T14:16:07Z</lastModified>
       <import>
         <name>ivoa</name>
         <version>1.0</version>
@@ -147,7 +147,7 @@
                          <enumeration>
                             <vodml-id>catalog.LuminosityType</vodml-id>
                             <name>LuminosityType</name>
-                            <description>vale</description>	    
+                            <description>the type of luminosity measurement</description>	    
                                <literal>
                                  <vodml-id>catalog.LuminosityType.magnitude</vodml-id>
                                  <name>magnitude</name>
@@ -162,16 +162,16 @@
                          <enumeration>
                             <vodml-id>catalog.SourceClassification</vodml-id>
                             <name>SourceClassification</name>
-                            <description></description>	    
+                            <description>source classification</description>	    
                                <literal>
                                  <vodml-id>catalog.SourceClassification.target</vodml-id>
                                  <name>target</name>
-                                 <description></description>	    
+                                 <description>source is the target of the observation</description>	    
                                </literal>	
                                <literal>
                                  <vodml-id>catalog.SourceClassification.calibrator</vodml-id>
                                  <name>calibrator</name>
-                                 <description></description>	    
+                                 <description>source is a calibrator for the observation</description>	    
                                </literal>	
                          </enumeration>
                          <dataType>
@@ -285,7 +285,7 @@
                          <attribute>
                            <vodml-id>catalog.SkyCoordinate.coord</vodml-id>
                            <name>coord</name>
-                           <description></description>	    
+                           <description>the position on the sky</description>	    
                            <datatype>
                               <vodml-ref>adqlgeom:Point</vodml-ref>
                            </datatype>
@@ -419,7 +419,7 @@
                             <attribute>
                               <vodml-id>catalog.LuminosityMeasurement.value</vodml-id>
                               <name>value</name>
-                              <description></description>	    
+                              <description>the luminosity measurement</description>	    
                               <datatype>
                                  <vodml-ref>ivoa:RealQuantity</vodml-ref>
                               </datatype>
@@ -431,7 +431,7 @@
                             <attribute>
                               <vodml-id>catalog.LuminosityMeasurement.error</vodml-id>
                               <name>error</name>
-                              <description></description>	    
+                              <description>the error on the luminosity measurement</description>	    
                               <datatype>
                                  <vodml-ref>ivoa:RealQuantity</vodml-ref>
                               </datatype>

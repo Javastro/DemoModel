@@ -1,6 +1,6 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.6.1"
+    id("net.ivoa.vo-dml.vodmltools") version "0.6.2"
     `maven-publish`
     id("org.kordamp.gradle.jandex") version "1.1.0"
 }
@@ -17,15 +17,15 @@ vodml {
 
 }
 /* uncomment below to run the generation of vodml from vodsl automatically */
-//tasks.named("vodmlJavaGenerate") {
-//    dependsOn("vodslToVodml")
-//}
-//tasks.named("vodmlSchema") {
-//    dependsOn("vodslToVodml")
-//}
-//tasks.named("vodmlSite") {
-//    dependsOn("vodslToVodml")
-//}
+tasks.named("vodmlJavaGenerate") {
+    dependsOn("vodslToVodml")
+}
+tasks.named("vodmlSchema") {
+    dependsOn("vodslToVodml")
+}
+tasks.named("vodmlSite") {
+    dependsOn("vodslToVodml")
+}
 
 
 tasks.test {
