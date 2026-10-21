@@ -6,7 +6,6 @@ package org.ivoa.dm.demodm.instances;
  */
 
 import org.ivoa.dm.adqlgeom.Circle;
-import org.ivoa.dm.adqlgeom.Polygon;
 import org.ivoa.dm.demodm.*;
 import org.ivoa.dm.demodm.catalog.*;
 import org.ivoa.dm.demodm.catalog.inner.SourceCatalogue;
@@ -14,10 +13,10 @@ import org.ivoa.dm.demodm.catalog.inner.Testing;
 import org.ivoa.dm.ivoa.RealQuantity;
 import org.ivoa.vodml.stdtypes.Unit;
 import org.javastro.ivoacore.pgsphere.types.Point;
+import org.javastro.ivoacore.pgsphere.types.Polygon;
 
-import java.util.ArrayList;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import static org.ivoa.dm.demodm.PhotometryFilter.createPhotometryFilter;
@@ -55,8 +54,8 @@ public class InstanceGenerator {
                         fl -> {
                            fl.bandName = "C-Band";
                            fl.spectralLocation = new RealQuantity(5.0, GHz);
-                           fl.dataValidityFrom = new Date();
-                           fl.dataValidityTo = new Date();
+                           fl.dataValidityFrom = ZonedDateTime.now();
+                           fl.dataValidityTo = ZonedDateTime.now();
                            fl.description = "radio band";
                            fl.name = fl.bandName;
                         }),
@@ -64,8 +63,8 @@ public class InstanceGenerator {
                         fl -> {
                            fl.bandName = "L-Band";
                            fl.spectralLocation = new RealQuantity(1.5, GHz);
-                           fl.dataValidityFrom = new Date();
-                           fl.dataValidityTo = new Date();
+                           fl.dataValidityFrom = ZonedDateTime.now();
+                           fl.dataValidityTo = ZonedDateTime.now();
                            fl.description = "radio band";
                            fl.name = fl.bandName;
                         }));

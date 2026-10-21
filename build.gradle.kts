@@ -1,12 +1,12 @@
 plugins {
     // this plugin provides all the vo-dml functionality
-    id("net.ivoa.vo-dml.vodmltools") version "0.6.2"
+    id("net.ivoa.vo-dml.vodmltools") version "0.7.3"
     `maven-publish`
     id("org.kordamp.gradle.jandex") version "1.1.0"
 }
 
 group = "org.javastro.ivoa.dm"
-version = "0.1"
+version = "0.2"
 
 vodml {
     vodmlDir.set(file("vo-dml"))
@@ -34,7 +34,7 @@ tasks.test {
 
 dependencies {
     //depend on geom model.
-    implementation("net.ivoa.dm:ADQLGeomDM:0.9-SNAPSHOT") // IMPL using API so that it appears in transitive compile
+    implementation("net.ivoa.dm:ADQLGeomDM:0.9.2") // IMPL using API so that it appears in transitive compile
     // the dependencies below are related to testing
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
