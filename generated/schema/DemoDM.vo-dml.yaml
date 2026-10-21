@@ -1,0 +1,418 @@
+components:
+  schemas:
+    PhotometricSystem:
+      type: "object"
+      description: ""
+      properties:
+        description:
+          type: "string"
+          description: "String representation Photometric system"
+        detectorType:
+          type: "integer"
+          description: "Type of detector (e.g energy or photon counter)"
+        photometryFilter:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/PhotometryFilter"
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required:
+      - "detectorType"
+      - "photometryFilter"
+      additionalProperties: false
+    PhotometryFilter:
+      type: "object"
+      description: ""
+      properties:
+        name:
+          type: "string"
+          description: "Filter Name in the instrumental configuration"
+        description:
+          type: "string"
+          description: "Text description of the filter band"
+        bandName:
+          type: "string"
+          description: ""
+        dataValidityFrom:
+          type: "string"
+          format: "date-time"
+          description: ""
+        dataValidityTo:
+          type: "string"
+          format: "date-time"
+          description: ""
+        spectralLocation:
+          $ref: "#/components/schemas/RealQuantity_wrapper"
+          description: ""
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required:
+      - "name"
+      - "description"
+      - "bandName"
+      - "dataValidityFrom"
+      - "dataValidityTo"
+      - "spectralLocation"
+      additionalProperties: false
+    catalog.LuminosityType:
+      description: "the type of luminosity measurement"
+      enum:
+      - "magnitude"
+      - "flux"
+    catalog.SourceClassification:
+      description: "source classification"
+      enum:
+      - "target"
+      - "calibrator"
+    catalog.AlignedEllipse:
+      allOf:
+      - $ref: "#/components/schemas/catalog.SkyError"
+      - type: "object"
+        description: ""
+        properties:
+          longError:
+            type: "number"
+            description: ""
+          latError:
+            type: "number"
+            description: ""
+        required:
+        - "longError"
+        - "latError"
+      unevaluatedProperties: false
+    catalog.AlignedEllipse_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.AlignedEllipse:
+              $ref: "#/components/schemas/catalog.AlignedEllipse"
+    catalog.CircleError:
+      allOf:
+      - $ref: "#/components/schemas/catalog.SkyError"
+      - type: "object"
+        description: ""
+        properties:
+          radius:
+            type: "number"
+            description: ""
+        required:
+        - "radius"
+      unevaluatedProperties: false
+    catalog.CircleError_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.CircleError:
+              $ref: "#/components/schemas/catalog.CircleError"
+    catalog.GenericEllipse:
+      allOf:
+      - $ref: "#/components/schemas/catalog.SkyError"
+      - type: "object"
+        description: ""
+        properties:
+          major:
+            type: "number"
+            description: "major axis of error ellipse"
+          minor:
+            type: "number"
+            description: "minor axis of error ellipse"
+          pa:
+            type: "number"
+            description: "Position angle of error ellipse in coordinate system of\
+              \ position."
+        required:
+        - "major"
+        - "minor"
+        - "pa"
+      unevaluatedProperties: false
+    catalog.GenericEllipse_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.GenericEllipse:
+              $ref: "#/components/schemas/catalog.GenericEllipse"
+    catalog.SkyCoordinate:
+      type: "object"
+      description: ""
+      properties:
+        coord:
+          $ref: "#/components/schemas/Point"
+          description: "the position on the sky"
+        frame:
+          oneOf:
+          - type: "string"
+          - $ref: "#/components/schemas/catalog.SkyCoordinateFrame"
+          description: ""
+      required:
+      - "coord"
+      - "frame"
+      additionalProperties: false
+    catalog.SkyError:
+      type: "object"
+      description: "Error of a position on the sky."
+      properties: {}
+      required: []
+    catalog.SkyError_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.SkyError:
+              $ref: "#/components/schemas/catalog.SkyError"
+        - type: "object"
+          properties:
+            DemoDM:catalog.AlignedEllipse:
+              $ref: "#/components/schemas/catalog.AlignedEllipse"
+        - type: "object"
+          properties:
+            DemoDM:catalog.CircleError:
+              $ref: "#/components/schemas/catalog.CircleError"
+        - type: "object"
+          properties:
+            DemoDM:catalog.GenericEllipse:
+              $ref: "#/components/schemas/catalog.GenericEllipse"
+    catalog.AbstractSource:
+      allOf:
+      - $ref: "#/components/schemas/catalog.AstroObject"
+      - type: "object"
+        description: ""
+        properties:
+          name:
+            type: "string"
+            description: ""
+          description:
+            type: "string"
+            description: ""
+          position:
+            $ref: "#/components/schemas/catalog.SkyCoordinate"
+            description: ""
+          positionError:
+            $ref: "#/components/schemas/catalog.SkyError_wrapper"
+            description: ""
+          classification:
+            $ref: "#/components/schemas/catalog.SourceClassification"
+            description: ""
+          luminosity:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/catalog.LuminosityMeasurement"
+        required:
+        - "name"
+        - "position"
+        - "classification"
+    catalog.AbstractSource_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.AbstractSource:
+              $ref: "#/components/schemas/catalog.AbstractSource"
+        - type: "object"
+          properties:
+            DemoDM:catalog.SDSSSource:
+              $ref: "#/components/schemas/catalog.SDSSSource"
+        - type: "object"
+          properties:
+            DemoDM:catalog.Source:
+              $ref: "#/components/schemas/catalog.Source"
+        - type: "object"
+          properties:
+            DemoDM:catalog.TwoMassSource:
+              $ref: "#/components/schemas/catalog.TwoMassSource"
+    catalog.AstroObject:
+      type: "object"
+      description: "Generic base class for all astronomical objects."
+      properties:
+        objectType:
+          type: "string"
+          description: ""
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required: []
+    catalog.AstroObject_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.AstroObject:
+              $ref: "#/components/schemas/catalog.AstroObject"
+        - type: "object"
+          properties:
+            DemoDM:catalog.AbstractSource:
+              $ref: "#/components/schemas/catalog.AbstractSource"
+        - type: "object"
+          properties:
+            DemoDM:catalog.SDSSSource:
+              $ref: "#/components/schemas/catalog.SDSSSource"
+        - type: "object"
+          properties:
+            DemoDM:catalog.Source:
+              $ref: "#/components/schemas/catalog.Source"
+        - type: "object"
+          properties:
+            DemoDM:catalog.TwoMassSource:
+              $ref: "#/components/schemas/catalog.TwoMassSource"
+    catalog.LuminosityMeasurement:
+      type: "object"
+      description: ""
+      properties:
+        value:
+          $ref: "#/components/schemas/RealQuantity_wrapper"
+          description: "the luminosity measurement"
+        error:
+          $ref: "#/components/schemas/RealQuantity_wrapper"
+          description: "the error on the luminosity measurement"
+        description:
+          type: "string"
+          description: ""
+        type:
+          $ref: "#/components/schemas/catalog.LuminosityType"
+          description: ""
+        filter:
+          oneOf:
+          - type: "number"
+          - $ref: "#/components/schemas/PhotometryFilter"
+          description: ""
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required:
+      - "value"
+      - "type"
+      - "filter"
+      additionalProperties: false
+    catalog.SDSSSource:
+      allOf:
+      - $ref: "#/components/schemas/catalog.AbstractSource"
+      - type: "object"
+        description: ""
+        properties: {}
+        required: []
+      unevaluatedProperties: false
+    catalog.SDSSSource_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.SDSSSource:
+              $ref: "#/components/schemas/catalog.SDSSSource"
+    catalog.SkyCoordinateFrame:
+      type: "object"
+      description: ""
+      properties:
+        name:
+          type: "string"
+          description: ""
+        documentURI:
+          type: "string"
+          format: "uri"
+          description: ""
+        equinox:
+          type: "string"
+          description: ""
+        system:
+          type: "string"
+          description: ""
+      required:
+      - "name"
+      - "documentURI"
+      additionalProperties: false
+    catalog.Source:
+      allOf:
+      - $ref: "#/components/schemas/catalog.AbstractSource"
+      - type: "object"
+        description: ""
+        properties: {}
+        required: []
+      unevaluatedProperties: false
+    catalog.Source_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.Source:
+              $ref: "#/components/schemas/catalog.Source"
+    catalog.TwoMassSource:
+      allOf:
+      - $ref: "#/components/schemas/catalog.AbstractSource"
+      - type: "object"
+        description: ""
+        properties: {}
+        required: []
+      unevaluatedProperties: false
+    catalog.TwoMassSource_wrapper:
+      type: "object"
+      properties:
+        oneOf:
+        - type: "object"
+          properties:
+            DemoDM:catalog.TwoMassSource:
+              $ref: "#/components/schemas/catalog.TwoMassSource"
+    catalog.inner.Testing:
+      type: "object"
+      description: ""
+      properties:
+        plain:
+          type: "string"
+          description: "a single string"
+        unboundeds:
+          type: "array"
+          items:
+            type: "string"
+          description: "an array with many elements"
+        apoint:
+          $ref: "#/components/schemas/Point"
+          description: ""
+        acircle:
+          $ref: "#/components/schemas/Circle_wrapper"
+          description: ""
+        apoly:
+          $ref: "#/components/schemas/Polygon_wrapper"
+          description: ""
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required:
+      - "plain"
+      - "apoint"
+      - "acircle"
+      - "apoly"
+      additionalProperties: false
+    catalog.inner.SourceCatalogue:
+      type: "object"
+      description: ""
+      properties:
+        name:
+          type: "string"
+          description: "the name of the catalogue"
+        entry:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/catalog.AbstractSource_wrapper"
+        aTest:
+          type: "object"
+          $ref: "#/components/schemas/catalog.inner.Testing"
+        aTestMore:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/catalog.inner.Testing"
+        _id:
+          type: "integer"
+          description: "surrogate key"
+      required:
+      - "name"
+      additionalProperties: false

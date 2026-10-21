@@ -1,0 +1,143 @@
+
+
+@startuml
+
+' hide the spot
+' hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+        
+entity "DemoDM.PhotometricSystem" as DemoDM.PhotometricSystem {
+
+    
+---
+
+    
+}
+
+entity "DemoDM.PhotometryFilter" as DemoDM.PhotometryFilter {
+
+    
+---
+
+    
+---
+      PHOTOMETRICSYSTEM_ID : BIGINT<<FK>>
+
+}
+
+entity "DemoDM.AbstractSource" as DemoDM.AbstractSource {
+
+    
+---
+
+    
+---
+      SOURCECATALOGUE_ID : BIGINT<<FK>>
+ID : BIGINT<<FK>>
+position_frame : VARCHAR<<FK>>
+
+}
+
+entity "DemoDM.AstroObject" as DemoDM.AstroObject {
+
+    
+---
+
+    
+}
+
+entity "DemoDM.LuminosityMeasurement" as DemoDM.LuminosityMeasurement {
+
+    
+---
+
+    
+---
+      filter : BIGINT<<FK>>
+ABSTRACTSOURCE_ID : BIGINT<<FK>>
+
+}
+
+entity "DemoDM.SDSSSource" as DemoDM.SDSSSource {
+
+    
+---
+
+    
+---
+      ID : BIGINT<<FK>>
+
+}
+
+entity "DemoDM.SkyCoordinateFrame" as DemoDM.SkyCoordinateFrame {
+
+    
+---
+
+    
+}
+
+entity "DemoDM.Source" as DemoDM.Source {
+
+    
+---
+
+    
+---
+      ID : BIGINT<<FK>>
+
+}
+
+entity "DemoDM.TwoMassSource" as DemoDM.TwoMassSource {
+
+    
+---
+
+    
+---
+      ID : BIGINT<<FK>>
+
+}
+
+entity "DemoDM.Testing" as DemoDM.Testing {
+
+    
+---
+
+    
+---
+      SOURCECATALOGUE_ID : BIGINT<<FK>>
+
+}
+
+entity "DemoDM.SourceCatalogue" as DemoDM.SourceCatalogue {
+
+    
+---
+
+    
+---
+      aTest : BIGINT<<FK>>
+
+}
+
+
+        DemoDM.PhotometryFilter }o--||DemoDM.PhotometricSystem
+DemoDM.AbstractSource }o--||DemoDM.SourceCatalogue
+DemoDM.AbstractSource }o--||DemoDM.AstroObject
+DemoDM.AbstractSource }o--||DemoDM.SkyCoordinateFrame
+DemoDM.LuminosityMeasurement }o--||DemoDM.PhotometryFilter
+DemoDM.LuminosityMeasurement }o--||DemoDM.AbstractSource
+DemoDM.SDSSSource }o--||DemoDM.AbstractSource
+DemoDM.Source }o--||DemoDM.AbstractSource
+DemoDM.TwoMassSource }o--||DemoDM.AbstractSource
+DemoDM.Testing }o--||DemoDM.SourceCatalogue
+DemoDM.SourceCatalogue }o--||DemoDM.Testing
+
+
+
+@enduml
+
+    
